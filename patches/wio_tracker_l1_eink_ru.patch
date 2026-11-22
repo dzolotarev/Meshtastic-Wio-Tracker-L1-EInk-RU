@@ -1,0 +1,67 @@
+diff --git a/variants/nrf52840/seeed_wio_tracker_L1/variant.h b/variants/nrf52840/seeed_wio_tracker_L1/variant.h
+index aeaa8f44a..2f1fe4b98 100644
+--- a/variants/nrf52840/seeed_wio_tracker_L1/variant.h
++++ b/variants/nrf52840/seeed_wio_tracker_L1/variant.h
+@@ -162,10 +162,10 @@ static const uint8_t SCL = PIN_WIRE_SCL;
+ 
+ // trackball
+ #define HAS_TRACKBALL 1
+-#define TB_UP 25
+-#define TB_DOWN 26
+-#define TB_LEFT 27
+-#define TB_RIGHT 28
++#define TB_UP 27
++#define TB_DOWN 28
++#define TB_LEFT 26
++#define TB_RIGHT 25
+ #define TB_PRESS 29
+ #define TB_DIRECTION FALLING
+ // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+diff --git a/variants/nrf52840/seeed_wio_tracker_L1_eink/nicheGraphics.h b/variants/nrf52840/seeed_wio_tracker_L1_eink/nicheGraphics.h
+index ea74bbcf3..ef92f73f9 100644
+--- a/variants/nrf52840/seeed_wio_tracker_L1_eink/nicheGraphics.h
++++ b/variants/nrf52840/seeed_wio_tracker_L1_eink/nicheGraphics.h
+@@ -52,9 +52,9 @@ void setupNicheGraphics()
+     inkhud->setDisplayResilience(15);
+ 
+     // Select fonts
+-    InkHUD::Applet::fontLarge = FREESANS_12PT;
+-    InkHUD::Applet::fontMedium = FREESANS_9PT;
+-    InkHUD::Applet::fontSmall = FREESANS_6PT;
++    InkHUD::Applet::fontLarge = FREESANS_12PT_WIN1251;
++    InkHUD::Applet::fontMedium = FREESANS_9PT_WIN1251;
++    InkHUD::Applet::fontSmall = FREESANS_6PT_WIN1251;
+ 
+     // Customize default settings
+     inkhud->persistence->settings.rotation = 1; // 90 degrees clockwise
+diff --git a/variants/nrf52840/seeed_wio_tracker_L1_eink/platformio.ini b/variants/nrf52840/seeed_wio_tracker_L1_eink/platformio.ini
+index 587349602..ab10de663 100644
+--- a/variants/nrf52840/seeed_wio_tracker_L1_eink/platformio.ini
++++ b/variants/nrf52840/seeed_wio_tracker_L1_eink/platformio.ini
+@@ -44,6 +44,7 @@ board = seeed_wio_tracker_L1
+ extends = env:seeed_wio_tracker_L1_eink, inkhud
+ board_level = release
+ build_flags = 
++  -D OLED_RU
+   ${env:seeed_wio_tracker_L1_eink.build_flags}
+   ${inkhud.build_flags}
+   -D BUTTON_PIN=D13
+diff --git a/variants/nrf52840/seeed_wio_tracker_L1_eink/variant.h b/variants/nrf52840/seeed_wio_tracker_L1_eink/variant.h
+index 9dd92a5f5..17818e9e9 100644
+--- a/variants/nrf52840/seeed_wio_tracker_L1_eink/variant.h
++++ b/variants/nrf52840/seeed_wio_tracker_L1_eink/variant.h
+@@ -168,10 +168,10 @@ static const uint8_t SCL = PIN_WIRE_SCL;
+ 
+ // trackball
+ #define HAS_TRACKBALL 1
+-#define TB_UP 25
+-#define TB_DOWN 26
+-#define TB_LEFT 27
+-#define TB_RIGHT 28
++#define TB_UP 27
++#define TB_DOWN 28
++#define TB_LEFT 26
++#define TB_RIGHT 25
+ #define TB_PRESS 29
+ #define TB_DIRECTION FALLING
+ 
